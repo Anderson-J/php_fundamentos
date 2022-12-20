@@ -22,16 +22,16 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach(cursos() as $curso) : ?>
+          <?php foreach($cursoRepositorio->todos() as $curso) : ?>
             <?php 
-              if (!$curso["status"]) {
+              if (!$curso->getStatus()) {
                 continue;
               }
             ?>
             <tr>
-              <th scope="row"><?= $curso["nome_curso"] ?></th>
-              <td><?= carga_horaria($curso["carga_horaria"]) ?></td>
-              <td><?= $curso["versao_ferramenta"] ?></td>
+              <th scope="row"><?= $curso->getNome() ?></th>
+              <td><?= App\Uteis\Formatador::cargaHoraria($curso->getCargaHoraria()) ?></td>
+              <td><?= $curso->getVersaoFerramenta() ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
